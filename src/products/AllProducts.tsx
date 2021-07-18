@@ -12,6 +12,7 @@ export default function AllProducts({ products }: iList) {
   return (
     <>
       {products.length === 0 && <h5>No products available!</h5>}
+
       <div className="d-flex flex-wrap">
         {products.map((product, i) => (
           <div key={i} className="border rounded p-4 shrink">

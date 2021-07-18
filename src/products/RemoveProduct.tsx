@@ -4,20 +4,16 @@ interface iProduct {
   seller: string;
 }
 
-interface iAdd {
+interface iRemove {
   products: iProduct[];
-  addProduct: any;
+  removeProduct: (title: string) => void;
 }
 
-export default function AddProduct({ products, addProduct }: iAdd) {
-  const removeItem = (title: string): void => {
-    const removed = products.filter((product) => product.title !== title);
-    addProduct(removed);
-  };
-
+export default function AddProduct({ products, removeProduct }: iRemove) {
   return (
     <>
       {products.length === 0 && <h5>No products to remove!</h5>}
+
       <div className="d-flex flex-column">
         {products.map((product, i) => (
           <div
@@ -29,9 +25,10 @@ export default function AddProduct({ products, addProduct }: iAdd) {
               <p className="text-warning mb-0">BDT {product.price}/=</p>
               <small className="text-light">By: {product.seller}</small>
             </div>
+
             <div className="delete">
               <button
-                onClick={() => removeItem(product.title)}
+                onClick={() => removeProduct(product.title)}
                 className="btn btn-outline-danger border-3 fw-bold fs-4 py-0"
               >
                 &times;

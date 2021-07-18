@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 interface iProduct {
   title: string;
@@ -8,20 +8,22 @@ interface iProduct {
 
 interface iAdd {
   products: iProduct[];
-  addProduct: any;
+  addProduct: (newProduct: iProduct) => void;
 }
 
 export default function AddProduct({ products, addProduct }: iAdd) {
   const empty = { title: "", price: 0, seller: "" };
   const [newProduct, setNewProduct] = useState<iProduct>(empty);
 
-  const updateDetails = (e: any): void => {
+  // create new product
+  const updateDetails = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: any): void => {
+  // add new product to list
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    addProduct([...products, newProduct]);
+    addProduct(newProduct);
     setNewProduct(empty);
   };
 

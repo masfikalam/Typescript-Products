@@ -11,7 +11,18 @@ interface iProduct {
 
 export default function Products() {
   const [tab, setTab] = useState(0);
-  const [products, addProduct] = useState<iProduct[]>([]);
+  const [products, setProducts] = useState<iProduct[]>([]);
+
+  // add new product
+  const addProduct = (newProduct: iProduct): void => {
+    setProducts([...products, newProduct]);
+  };
+
+  // remove a product
+  const removeProduct = (title: string): void => {
+    const removed = products.filter((product) => product.title !== title);
+    setProducts(removed);
+  };
 
   return (
     <section id="holder">
@@ -47,7 +58,7 @@ export default function Products() {
       {tab === 0 && <AllProducts products={products} />}
       {tab === 1 && <AddProduct products={products} addProduct={addProduct} />}
       {tab === 2 && (
-        <RemoveProduct products={products} addProduct={addProduct} />
+        <RemoveProduct products={products} removeProduct={removeProduct} />
       )}
     </section>
   );
