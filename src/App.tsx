@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Products from "./products/Products";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+      <h2 className="pt-5 text-warning">Admin Dashboard</h2>
+      <small id="credit">
+        Assignment by{" : "}
+        <a href="https://masfikul-alam.web.app" className="text-warning">
+          masfikalamfrp@gmail.com
         </a>
-      </header>
+      </small>
+
+      <Products />
     </div>
   );
 }
-
-export default App;

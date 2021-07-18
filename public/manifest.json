@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "React - Typescript",
+  "name": "A simple admin dashboard made with React and TypeScript",
   "icons": [
     {
       "src": "favicon.ico",
